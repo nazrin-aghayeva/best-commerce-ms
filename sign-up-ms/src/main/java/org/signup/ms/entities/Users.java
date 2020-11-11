@@ -1,4 +1,4 @@
-package org.signup.ms.model;
+package org.signup.ms.entities;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -38,7 +38,7 @@ public class Users {
     private String owner_address;
 
     @Email
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     public String email;
 
     @Length(min = 6)

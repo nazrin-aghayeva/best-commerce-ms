@@ -1,6 +1,6 @@
 package org.signup.ms.services;
 
-import org.signup.ms.model.Users;
+import org.signup.ms.entities.Users;
 import org.signup.ms.repository.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
