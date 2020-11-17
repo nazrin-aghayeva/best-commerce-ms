@@ -1,37 +1,14 @@
 package org.signup.ms.services;
 
 import org.signup.ms.entities.Users;
-import org.signup.ms.repository.UserRepo;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.util.Optional;
-
-@Transactional
-@Service
-public class UserService {
-
-    public UserRepo userRepo;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+import org.signup.ms.entities.dto.UsersDto;
+import java.util.List;
 
 
-    public UserService(UserRepo userRepo, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepo = userRepo;
-        this.bCryptPasswordEncoder= bCryptPasswordEncoder;
-    }
-
-    public Optional<Users> findUserByEmail(String user_email){
-        return userRepo.findByEmail(user_email);
-    }
-
-    public Users saveUser(Users user){
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setConfirm_password(bCryptPasswordEncoder.encode(user.getConfirm_password()));
-        user.setActive(1);
-        user.setCreated_time(LocalDateTime.now());
-        return userRepo.save(user);
-    }
-
+public interface UserService {
+    Users save(UsersDto user);
+    List<Users> findAll();
+    void delete(int user_id);
+    Users findByOne(String email);
+    Users findById(int user_id);
 }
