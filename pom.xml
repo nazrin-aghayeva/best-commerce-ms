@@ -11,6 +11,7 @@
     <modules>
         <module>sign-up-ms</module>
         <module>sign-in-ms</module>
+        <module>product-listing</module>
     </modules>
 
 
