@@ -2,6 +2,7 @@ package org.signup.ms.contoller;
 
 import org.signup.ms.entities.Users;
 import org.signup.ms.entities.dto.UsersDto;
+import org.signup.ms.entities.response.ApiResponse;
 import org.signup.ms.payload.MessageResponse;
 import org.signup.ms.repository.UserRepo;
 import org.signup.ms.services.UserService;
@@ -31,20 +32,21 @@ public class UserController {
         userService.save(user);
         return ResponseEntity.ok(new MessageResponse("User have been successfully created"));
     }
+
+    @RequestMapping(value = "/registr", method = RequestMethod.POST)
+    public ApiResponse<Users> saveUser(@RequestBody UsersDto usersDto){
+        return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully", userService.save(usersDto));
+    }
+
+    @RequestMapping(value = "/user-list", method = RequestMethod.GET)
+    public ApiResponse<List<Users>> userList(){
+        return new ApiResponse<>(HttpStatus.OK.value(), "User list fetched", userService.findAll());
+    }
+
+//    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 }
 
 
-//package com.devglan.controller;
-//
-//        import com.devglan.model.ApiResponse;
-//        import com.devglan.model.User;
-//        import com.devglan.model.UserDto;
-//        import com.devglan.service.UserService;
-//        import org.springframework.beans.factory.annotation.Autowired;
-//        import org.springframework.http.HttpStatus;
-//        import org.springframework.web.bind.annotation.*;
-//
-//        import java.util.List;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
 //@RestController
@@ -53,11 +55,6 @@ public class UserController {
 //
 //    @Autowired
 //    private UserService userService;
-//
-//    @PostMapping
-//    public ApiResponse<User> saveUser(@RequestBody UserDto user){
-//        return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully.",userService.save(user));
-//    }
 //
 //    @GetMapping
 //    public ApiResponse<List<User>> listUser(){
@@ -76,13 +73,12 @@ public class UserController {
 //
 //    @DeleteMapping("/{id}")
 //    public ApiResponse<Void> delete(@PathVariable int id) {
-//        userService.delete(id);
-//        return new ApiResponse<>(HttpStatus.OK.value(), "User deleted successfully.", null);
+//
+//        return new ApiResponse<>(HttpStatus.OK.value(), "User deleted successfully.",  userService.delete(id));
 //    }
-//
-//
-//
-//}
+
+
+
 
 
 
