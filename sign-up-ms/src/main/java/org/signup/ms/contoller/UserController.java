@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.ok(new MessageResponse("User have been successfully created"));
     }
 
-    @RequestMapping(value = "/registr", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ApiResponse<Users> saveUser(@RequestBody UsersDto usersDto){
         return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully", userService.save(usersDto));
     }
@@ -42,40 +42,16 @@ public class UserController {
     public ApiResponse<List<Users>> userList(){
         return new ApiResponse<>(HttpStatus.OK.value(), "User list fetched", userService.findAll());
     }
-
-//    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/{id}", method = RequestMethod.GET)
+    public ApiResponse<Users> getUser(@PathVariable int id){
+        return new ApiResponse<>(HttpStatus.OK.value(), "User fetched successfully", userService.findById(id));
+    }
 }
 
 
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
-//@RestController
-//@RequestMapping("/users")
-//public class UserController {
-//
-//    @Autowired
-//    private UserService userService;
-//
-//    @GetMapping
-//    public ApiResponse<List<User>> listUser(){
-//        return new ApiResponse<>(HttpStatus.OK.value(), "User list fetched successfully.",userService.findAll());
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ApiResponse<User> getOne(@PathVariable int id){
-//        return new ApiResponse<>(HttpStatus.OK.value(), "User fetched successfully.",userService.findById(id));
-//    }
-//
-//    @PutMapping("/{id}")
-//    public ApiResponse<UserDto> update(@RequestBody UserDto userDto) {
-//        return new ApiResponse<>(HttpStatus.OK.value(), "User updated successfully.",userService.update(userDto));
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public ApiResponse<Void> delete(@PathVariable int id) {
-//
-//        return new ApiResponse<>(HttpStatus.OK.value(), "User deleted successfully.",  userService.delete(id));
-//    }
+
 
 
 
