@@ -1,6 +1,7 @@
 package org.listing.entities;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -10,6 +11,8 @@ import javax.validation.constraints.Min;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
+@Accessors(chain = true)
 @Entity
 @Table(name = "product_listing")
 public class Product {
@@ -32,7 +35,7 @@ public class Product {
 
     @Min(5)
     @Column(name = "inventory")
-    private String inventory;
+    private int inventory;
 
     @Column(name = "payment_option")
     private String payment_option;

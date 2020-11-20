@@ -1,6 +1,7 @@
 package org.listing.config;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.listing.entities.Users;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 import java.util.function.Function;
 
 import static org.listing.entities.Constants.ACCESS_TOKEN_VALIDITY_SECONDS;
@@ -29,15 +31,19 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = getAllClaimsFromToken(token);
+        final Claims claims = getAllClaimsFromToken(token).get();
         return claimsResolver.apply(claims);
     }
 
-    private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser()
+    public Optional<Claims> getAllClaimsFromToken(String token) {
+        return Optional.of(Jwts.parser()
                 .setSigningKey(SIGNING_KEY)
                 .parseClaimsJws(token)
-                .getBody();
+                .getBody());
+    }
+
+    public Integer extractUserIdFromClaims(Claims claimsJws) {
+        return Integer.parseInt(claimsJws.getSubject());
     }
 
     private Boolean isTokenExpired(String token) {
