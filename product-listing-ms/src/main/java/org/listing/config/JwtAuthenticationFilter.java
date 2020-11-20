@@ -1,4 +1,4 @@
-package org.signup.ms.config;
+package org.listing.config;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
@@ -19,8 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 
-import static org.signup.ms.entities.Constants.HEADER_STRING;
-import static org.signup.ms.entities.Constants.TOKEN_PREFIX;
+import static org.listing.entities.Constants.HEADER_STRING;
+import static org.listing.entities.Constants.TOKEN_PREFIX;
+
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Qualifier("userService")

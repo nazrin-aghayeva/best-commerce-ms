@@ -1,9 +1,9 @@
-package org.signup.ms.config;
+package org.listing.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.signup.ms.entities.Users;
+import org.listing.entities.Users;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -13,8 +13,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.function.Function;
 
-import static org.signup.ms.entities.Constants.ACCESS_TOKEN_VALIDITY_SECONDS;
-import static org.signup.ms.entities.Constants.SIGNING_KEY;
+import static org.listing.entities.Constants.ACCESS_TOKEN_VALIDITY_SECONDS;
+import static org.listing.entities.Constants.SIGNING_KEY;
+
 
 @Component
 public class JwtTokenUtil implements Serializable {

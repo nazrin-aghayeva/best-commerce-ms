@@ -50,11 +50,6 @@ public class UserController {
 
 
 
-//@CrossOrigin(origins = "*", maxAge = 3600)
-
-
-
-
 
 
 
