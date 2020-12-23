@@ -1,9 +1,9 @@
 package org.signup.ms.contoller;
 
 import org.signup.ms.entities.Users;
-import org.signup.ms.entities.dto.UsersDto;
+import org.signup.ms.payload.request.SignupRequest;
 import org.signup.ms.payload.response.ApiResponse;
-import org.signup.ms.repository.UserRepo;
+import org.signup.ms.repository.UserRepository;
 import org.signup.ms.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    UserRepo userRepo;
+    UserRepository userRepo;
 
     public UserService userService;
 
@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ApiResponse<Users> saveUser(@RequestBody UsersDto usersDto){
-        return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully", userService.save(usersDto));
+    public ApiResponse<Users> saveUser(@RequestBody SignupRequest user){
+        return new ApiResponse<>(HttpStatus.OK.value(), "User saved successfully", userService.save(user));
     }
 
     @RequestMapping(value = "/user-list", method = RequestMethod.GET)
