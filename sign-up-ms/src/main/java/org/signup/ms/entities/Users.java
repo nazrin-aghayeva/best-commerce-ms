@@ -7,6 +7,8 @@ import org.signup.ms.validation.PasswordsEqualConstraint;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @PasswordsEqualConstraint(first = "password", second = "confirm_password", message = "Passwords must match")
 @Data
@@ -54,4 +56,10 @@ public class Users {
 
     @Column(name = "created_time")
     private LocalDateTime created_time;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Roles> roles= new HashSet<>();
 }

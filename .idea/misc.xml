@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/signup-ms/pom.xml" />
         <option value="$PROJECT_DIR$/mail-ms/pom.xml" />
+        <option value="$PROJECT_DIR$/product-listing-ms/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

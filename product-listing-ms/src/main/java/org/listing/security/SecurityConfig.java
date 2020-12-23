@@ -1,4 +1,4 @@
-package org.listing.config;
+package org.listing.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

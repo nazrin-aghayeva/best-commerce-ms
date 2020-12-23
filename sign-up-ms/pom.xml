@@ -8,13 +8,10 @@
         <version>2.3.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>sign-up-ms</groupId>
     <artifactId>sign-up</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>sign-up</name>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>13</java.version>
     </properties>
 
     <dependencies>

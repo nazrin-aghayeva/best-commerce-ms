@@ -2,17 +2,13 @@ package org.signup.ms.contoller;
 
 import org.signup.ms.entities.Users;
 import org.signup.ms.entities.dto.UsersDto;
-import org.signup.ms.entities.response.ApiResponse;
-import org.signup.ms.payload.MessageResponse;
+import org.signup.ms.payload.response.ApiResponse;
 import org.signup.ms.repository.UserRepo;
 import org.signup.ms.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,12 +21,6 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
-    }
-
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ResponseEntity<?> createNewUser(@Valid UsersDto user, HttpServletRequest httpRequest) {
-        userService.save(user);
-        return ResponseEntity.ok(new MessageResponse("User have been successfully created"));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)

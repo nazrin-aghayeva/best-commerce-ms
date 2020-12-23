@@ -1,4 +1,4 @@
-package org.signup.ms.entities.response;
+package org.signup.ms.payload.response;
 
 import lombok.*;
 
