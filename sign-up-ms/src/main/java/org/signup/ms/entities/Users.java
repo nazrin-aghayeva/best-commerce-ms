@@ -24,6 +24,17 @@ public class Users {
     @Column(name = "owner_id")
     private int user_id;
 
+    public Users(String merchant_type, String merchant_name, String owner_name, String owner_phone_number, String owner_address, @Email String email, String password, String confirm_password) {
+        this.merchant_type = merchant_type;
+        this.merchant_name = merchant_name;
+        this.owner_name = owner_name;
+        this.email = email;
+        this.owner_phone_number = owner_phone_number;
+        this.owner_address = owner_address;
+        this.password = password;
+        this.confirm_password = confirm_password;
+    }
+
     @Column(name = "merchant_type")
     private String merchant_type;
 

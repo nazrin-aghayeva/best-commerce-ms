@@ -1,13 +1,15 @@
-package org.signup.ms.services;
+package org.signup.ms.services.impl;
 
 import org.signup.ms.entities.Users;
 import org.signup.ms.repository.UserRepository;
-import org.signup.ms.services.impl.UserDetailsImpl;
+import org.signup.ms.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     UserRepository userRepository;

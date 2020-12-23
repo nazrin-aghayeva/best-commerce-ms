@@ -1,6 +1,6 @@
 package org.signup.ms.security.jwt;
 
-import org.signup.ms.services.UserDetailsServiceImpl;
+import org.signup.ms.services.impl.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
