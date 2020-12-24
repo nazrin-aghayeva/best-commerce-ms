@@ -1,4 +1,4 @@
-package org.signup.ms.security;
+package org.signup.ms.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
