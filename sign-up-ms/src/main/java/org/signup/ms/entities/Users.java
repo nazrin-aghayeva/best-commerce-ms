@@ -35,19 +35,14 @@ public class Users {
         this.confirm_password = confirm_password;
     }
 
-    @Column(name = "merchant_type")
     private String merchant_type;
 
-    @Column(name = "merchant_name")
     private String merchant_name;
 
-    @Column(name = "owner_name")
     private String owner_name;
 
-    @Column(name = "owner_phone_number")
     private String owner_phone_number;
 
-    @Column(name = "owner_address")
     private String owner_address;
 
     @Email
@@ -55,17 +50,13 @@ public class Users {
     public String email;
 
     @Length(min = 6)
-    @Column(name = "password")
     private String password;
 
     @Length(min = 6)
-    @Column(name = "confirm_password")
     private String confirm_password;
 
-    @Column(name = "active")
     private int active;
 
-    @Column(name = "created_time")
     private LocalDateTime created_time;
 
     @ManyToMany(fetch = FetchType.LAZY)
