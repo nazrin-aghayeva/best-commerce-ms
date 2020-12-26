@@ -53,6 +53,8 @@ public class Users {
 
     @OneToMany(targetEntity = Product.class,mappedBy = "user")
     private List<Product> products;
+
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

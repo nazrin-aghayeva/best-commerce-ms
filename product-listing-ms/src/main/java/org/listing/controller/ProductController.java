@@ -31,8 +31,8 @@ public class ProductController {
     @RequestMapping(value = "/products/add", method = RequestMethod.POST )
     public ResponseEntity<Object> addProduct(@Valid @RequestBody Product product, @RequestHeader("Authorization") String token){
         try {
-            String username= jwtUtils.getUsernameFromJwt(token);
-                productService.addProduct(product, username);
+            int userIdFromJwt= jwtUtils.getUserIdFromJwt(token);
+                productService.addProduct(product,userIdFromJwt);
                 return ResponseEntity.ok("Product added");
 
         }
@@ -44,8 +44,8 @@ public class ProductController {
 
     @RequestMapping(value = "/products/get", method = RequestMethod.GET)
         public ApiResponse<List<Product>> getProducts( @RequestHeader("Authorization") String token){
-        String username=jwtUtils.getUsernameFromJwt(token);
-        if (userRepo.findByEmail(username).isPresent()) {
+        int userIdFromJwt=jwtUtils.getUserIdFromJwt(token);
+        if (userRepo.findById(userIdFromJwt).isPresent()) {
             return new ApiResponse<>(HttpStatus.OK.value(), "Product List fetched successfully", productService.getProducts());
         }
         else {

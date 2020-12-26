@@ -15,11 +15,11 @@ import java.util.List;
 public class ProductListingImpl  implements ProductService {
     public UserRepo userRepo;
     public ProductRepo productRepo;
-    public boolean addProduct( Product product, String user_email) {
+    public boolean addProduct( Product product, int userId) {
         if (product.getInventory()<5) throw new InvalidInputException("Inventory must be more than 5");
-        if (userRepo.findByEmail(user_email).isPresent()) {
-            userRepo.findByEmail(user_email).get().addProduct(product);
-            product.setUser(userRepo.findByEmail(user_email).get());
+        if (userRepo.findById(userId).isPresent()) {
+            userRepo.findById(userId).get().addProduct(product);
+            product.setUser(userRepo.findById(userId).get());
             productRepo.save(product);
             return true;
         }

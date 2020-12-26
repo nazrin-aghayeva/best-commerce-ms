@@ -24,15 +24,15 @@ public class JwtUtils{
         UserDetailsImpl userPrincipal= (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder().
-                setSubject(userPrincipal.getEmail()).
+                setSubject(String.valueOf(userPrincipal.getId())).
                 setIssuedAt(new Date()).
                 setExpiration(new Date(new Date().getTime()+ jwtExpirationMs)).
                 signWith(SignatureAlgorithm.HS512, jwtSecret).
                 compact();
     }
 
-    public String getUsernameFromJwt(String token){
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+    public Integer getUserIdFromJwt(String token){
+        return Integer.parseInt(Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject());
     }
 
     public boolean validateToken(String token){

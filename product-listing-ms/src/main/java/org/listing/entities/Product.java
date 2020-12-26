@@ -46,4 +46,14 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Users user;
+
+    public Product(String productName, String category, String description, int price, @Min(5) int inventory, String payment_option, String delivery_option) {
+        this.productName = productName;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.inventory = inventory;
+        this.payment_option = payment_option;
+        this.delivery_option = delivery_option;
+    }
 }
